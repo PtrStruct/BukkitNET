@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\StatusBackgroundConverter.cs" />
     <Compile Include="MVVM\Model\PlayerModel.cs" />
     <Compile Include="MVVM\Model\ServerModel.cs" />
     <Compile Include="MVVM\ViewModel\BaseViewModel.cs" />

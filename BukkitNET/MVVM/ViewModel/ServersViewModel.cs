@@ -15,10 +15,9 @@ namespace BukkitNET.MVVM.ViewModel
         {
             ServerCollection = new ObservableCollection<ServerModel>();
 
-            for (int i = 0; i < 3; i++)
-            {
-                ServerCollection.Add(new ServerModel { ServerName = "My Server" });
-            }
+            ServerCollection.Add(new ServerModel { ServerName = "Craftarctica", ServerVersion = "1.14.2", Status = "Online" });
+            ServerCollection.Add(new ServerModel { ServerName = "Octagon", ServerVersion = "1.14.2", Status = "Offline" });
+            ServerCollection.Add(new ServerModel { ServerName = "ReinsOfMinecraft", ServerVersion = "1.14.2", Status = "Offline" });
         }
     }
 }

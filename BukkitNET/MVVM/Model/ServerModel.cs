@@ -19,8 +19,34 @@ namespace BukkitNET.MVVM.Model
         public string ServerName
             {
             get { return _serverName; }
-            set { _serverName = value; }
+            set
+            {
+                _serverName = value;
+                OnPropertyChanged();
+            }
         }
+
+        private string _serverVersion;
+
+        public string ServerVersion
+        {
+            get { return _serverVersion; }
+            set { _serverVersion = value; }
+        }
+
+
+        private string _status;
+
+        public string Status
+        {
+            get { return _status; }
+            set
+            {
+                _status = value; 
+                OnPropertyChanged();
+            }
+        }
+
 
     }
 }

@@ -4,9 +4,11 @@
              xmlns:local="clr-namespace:BukkitNET"
              xmlns:viewModel="clr-namespace:BukkitNET.MVVM.ViewModel"
              xmlns:view="clr-namespace:BukkitNET.MVVM.View"
+             xmlns:converters="clr-namespace:BukkitNET.Converters"
              StartupUri="MVVM/View/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Themes/BukkitNET.ThemesManifest.xaml"/>
             </ResourceDictionary.MergedDictionaries>
