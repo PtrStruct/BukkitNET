@@ -33,7 +33,7 @@ public BaseViewModel()
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/PtrStruct/BukkitNET/tree/master)
 
 ## Version
 ![GitHub version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=gh&type=6&v=1.0.0&x2=0)
