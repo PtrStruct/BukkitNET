@@ -4,19 +4,53 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BukkitNET.MVVM.View"
+             xmlns:viewModel="clr-namespace:BukkitNET.MVVM.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="#E4E5E7">
-    <Grid>
 
+    <UserControl.DataContext>
+        <viewModel:ConsoleViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <ListView>
+        <ListView Background="#191919"
+                  BorderThickness="0">
 
         </ListView>
-        <TextBox Grid.Row="1"/>
+
+        <Grid Height="25"
+              VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="server:~/$"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       FontFamily="Consolas"
+                       Grid.Column="0"/>
+
+            <TextBox Height="25"
+                     Background="#191919"
+                     Foreground="White"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="0"
+                     Grid.Column="1"
+                     x:Name="CommandTextbox">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding EnterCommand}"
+                                CommandParameter="{Binding ElementName=CommandTextbox, Path=Text}"
+                                Key="Return"/>
+                </TextBox.InputBindings>
+            </TextBox>
+        </Grid>
+
+
     </Grid>
 </UserControl>
