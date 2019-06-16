@@ -15,9 +15,23 @@
                 <view:DashboardView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:ConsoleViewModel}">
+                <view:ConsoleView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ServersViewModel}">
+                <view:ServersView/>
+            </DataTemplate>
+
+
             <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
                 <view:SettingsView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:UsersViewModel}">
+                <view:UsersView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

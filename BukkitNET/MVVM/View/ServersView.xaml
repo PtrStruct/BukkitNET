@@ -4,10 +4,82 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BukkitNET.MVVM.View"
+             xmlns:viewModel="clr-namespace:BukkitNET.MVVM.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="#E4E5E7">
+
+    <UserControl.DataContext>
+        <viewModel:ServersViewModel/>
+    </UserControl.DataContext>
+
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border Background="#F4F4F4">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="1"
+                                  Direction="270"
+                                  Color="#E4E4E4"
+                                  Opacity="0.6"
+                                  BlurRadius="0.5"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="Your Servers"
+                               FontFamily="Arial"
+                               FontWeight="Medium"
+                               FontSize="14"
+                               Margin="5"/>
+                    <TextBlock Text="BukkitNET"
+                               HorizontalAlignment="Center"
+                               Foreground="#8C8C8C"
+                               FontSize="10"
+                               TextOptions.TextFormattingMode="Ideal"
+                               TextOptions.TextHintingMode="Auto"/>
+                </StackPanel>
+
+                <Button Grid.Column="2"
+                        Width="100" Height="25"
+                        Style="{StaticResource ModernInstallButton}"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,20,0">
+                    <TextBlock Text="Create &amp; Edit"
+                               Foreground="White"
+                               FontWeight="Medium"/>
+                </Button>
+
+            </Grid>
+        </Border>
+
+
+        <Border Grid.Row="1"
+                VerticalAlignment="Top"
+                Margin="10">
+            <ItemsControl ItemsSource="{Binding ServerCollection}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Height="60"
+                                Margin="5"
+                                CornerRadius="4"
+                                Background="White">
+                            <TextBlock Text="{Binding ServerName}"
+                                       VerticalAlignment="Center"/>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Border>
     </Grid>
 </UserControl>

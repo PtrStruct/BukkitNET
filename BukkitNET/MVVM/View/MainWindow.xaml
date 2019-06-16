@@ -53,7 +53,8 @@
 
                 <RadioButton Style="{StaticResource MenuButtonTheme}"
                              Width="300"
-                             Command="{Binding DashboardViewCommand}">
+                             Command="{Binding DashboardViewCommand}"
+                             IsChecked="True">
                     <StackPanel Orientation="Horizontal"
                                 Margin="10,0,0,0">
                         <iconPacks:PackIconMaterial Kind="ViewDashboard" 
@@ -65,7 +66,18 @@
                     </StackPanel>
                 </RadioButton>
 
-                
+                <RadioButton Style="{StaticResource MenuButtonTheme}"
+                             Width="300">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="10,0,0,0">
+                        <iconPacks:PackIconMaterial Kind="Console" 
+                                                    Foreground="White"/>
+                        <TextBlock Text="Console"
+                                   Foreground="White"
+                                   FontWeight="Medium"
+                                   Margin="5,0,0,0"/>
+                    </StackPanel>
+                </RadioButton>
 
                 <RadioButton Style="{StaticResource MenuButtonTheme}"
                              Width="300"
@@ -95,27 +107,12 @@
                     </StackPanel>
                 </RadioButton>
 
-                <RadioButton Style="{StaticResource MenuButtonTheme}"
-                             Width="300">
-                    <StackPanel Orientation="Horizontal"
-                                Margin="10,0,0,0">
-                        <iconPacks:PackIconMaterial Kind="Console" 
-                                                    Foreground="White"/>
-                        <TextBlock Text="Console"
-                                   Foreground="White"
-                                   FontWeight="Medium"
-                                   Margin="5,0,0,0"/>
-                    </StackPanel>
-                </RadioButton>
-
-
                 <Grid Height="40"
                       Background="#192126">
                     <TextBlock Text="USER MANAGEMENT"
                                Foreground="#45626E"
                                VerticalAlignment="Center"
                                Margin="10,0,0,0"/>
-
                 </Grid>
 
                 <RadioButton Style="{StaticResource MenuButtonTheme}"

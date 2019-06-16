@@ -65,11 +65,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="MVVM\Model\PlayerModel.cs" />
+    <Compile Include="MVVM\Model\ServerModel.cs" />
     <Compile Include="MVVM\ViewModel\BaseViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ConsoleViewModel.cs" />
     <Compile Include="MVVM\ViewModel\DashboardViewModel.cs" />
     <Compile Include="MVVM\ViewModel\ServersViewModel.cs" />
     <Compile Include="MVVM\ViewModel\SettingsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\UsersViewModel.cs" />
+    <Compile Include="MVVM\View\ConsoleView.xaml.cs">
+      <DependentUpon>ConsoleView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
@@ -82,7 +87,12 @@
     <Compile Include="MVVM\View\UsersView.xaml.cs">
       <DependentUpon>UsersView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\ServerService.cs" />
     <Compile Include="Services\SettingsService.cs" />
+    <Page Include="MVVM\View\ConsoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\DashboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

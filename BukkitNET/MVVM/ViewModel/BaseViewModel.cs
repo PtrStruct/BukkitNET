@@ -24,7 +24,7 @@ namespace BukkitNET.MVVM.ViewModel
             DashboardViewCommand = new RelayCommand(o => { CurrentView = DashboardViewModel; }, o => true);
             SettingsViewCommand = new RelayCommand(o => { CurrentView = SettingsViewModel; }, o => true);
             UsersViewCommand = new RelayCommand(o => { CurrentView = UsersViewModel; }, o => true);
-            ServersViewCommand = new RelayCommand(o => { CurrentView = SettingsViewModel; }, o => true);
+            ServersViewCommand = new RelayCommand(o => { CurrentView = ServersViewModel; }, o => true);
 
             //Initialize a new instance of the ViewModel
             DashboardViewModel = new DashboardViewModel();

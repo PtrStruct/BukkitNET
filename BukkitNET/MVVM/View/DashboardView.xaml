@@ -14,31 +14,73 @@
     </UserControl.DataContext>
 
     <Grid>
-        <Border Width="200"
-                Height="70"
-                Background="#4EBC73"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Margin="20">
-            <StackPanel>
-                <TextBlock Text="{Binding OnlinePlayers}"
-                           Foreground="White"
-                           FontFamily="Tahoma"
-                           FontSize="18"
-                           VerticalAlignment="Top"
-                           HorizontalAlignment="Left"
-                           Margin="10,10,10,0"/>
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center">
+            <Border Width="200"
+                    Height="70"
+                    Background="#4EBC73"
+                    Margin="20">
+                <StackPanel>
+                    <TextBlock Text="{Binding OnlinePlayers}"
+                               Foreground="White"
+                               FontFamily="Tahoma"
+                               FontSize="18"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               Margin="10,10,10,0"/>
 
-                <TextBlock Text="Online Players"
-                           Foreground="White"
-                           FontFamily="Tahoma"
-                           FontSize="12"
-                           Margin="10,0,0,0"/>
-            </StackPanel>
-            
+                    <TextBlock Text="Online Players"
+                               Foreground="White"
+                               FontFamily="Tahoma"
+                               FontSize="12"
+                               Margin="10,0,0,0"/>
+                </StackPanel>
+            </Border>
 
+            <Border Width="200"
+                    Height="70"
+                    Background="#4EBC73"
+                    Margin="20">
+                <StackPanel>
+                    <TextBlock Text="{Binding GameMode}"
+                               Foreground="White"
+                               FontFamily="Tahoma"
+                               FontSize="18"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               Margin="10,10,10,0"/>
 
+                    <TextBlock Text="Gamemode"
+                               Foreground="White"
+                               FontFamily="Tahoma"
+                               FontSize="12"
+                               Margin="10,0,0,0"/>
+                </StackPanel>
+            </Border>
 
-        </Border>
+            <Border Width="200"
+                    Height="70"
+                    Background="#4EBC73"
+                    Margin="20">
+                <StackPanel>
+                    <TextBlock Text="{Binding Difficulty}"
+                               Foreground="White"
+                               FontFamily="Tahoma"
+                               FontSize="18"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left"
+                               Margin="10,10,10,0"/>
+
+                    <TextBlock Text="Difficulty"
+                               Foreground="White"
+                               FontFamily="Tahoma"
+                               FontSize="12"
+                               Margin="10,0,0,0"/>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+
     </Grid>
 </UserControl>
