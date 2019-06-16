@@ -79,6 +79,13 @@
                              FontWeight="Medium"/>
                 </StackPanel>
 
+                <StackPanel Width="100">
+                    <TextBlock Text="JAR Path"/>
+                    <TextBox Width="100" Height="25"
+                             FontWeight="Medium"
+                             Text="{Binding JarPath}"/>
+                </StackPanel>
+
             </StackPanel>
             
 

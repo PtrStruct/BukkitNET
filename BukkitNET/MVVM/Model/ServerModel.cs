@@ -47,6 +47,19 @@ namespace BukkitNET.MVVM.Model
             }
         }
 
+        private string _jarPath;
+
+        public string JarPath
+        {
+            get { return _jarPath; }
+            set
+            {
+                _jarPath = value; 
+                OnPropertyChanged();
+            }
+        }
+
+
 
     }
 }

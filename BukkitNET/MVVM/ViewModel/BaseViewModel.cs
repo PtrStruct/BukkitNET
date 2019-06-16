@@ -21,19 +21,20 @@ namespace BukkitNET.MVVM.ViewModel
         public BaseViewModel()
         {
 
-            /*Commands*/
-            DashboardViewCommand = new RelayCommand(o => { CurrentView = DashboardViewModel; }, o => true);
-            SettingsViewCommand = new RelayCommand(o => { CurrentView = SettingsViewModel; }, o => true);
-            UsersViewCommand = new RelayCommand(o => { CurrentView = UsersViewModel; }, o => true);
-            ServersViewCommand = new RelayCommand(o => { CurrentView = ServersViewModel; }, o => true);
-            ConsoleViewCommand = new RelayCommand(o => { CurrentView = ConsoleViewModel; }, o => true);
-
             //Initialize a new instance of the ViewModel
             DashboardViewModel = new DashboardViewModel();
             ConsoleViewModel = new ConsoleViewModel();
             SettingsViewModel = new SettingsViewModel();
             UsersViewModel = new UsersViewModel();
             ServersViewModel = new ServersViewModel();
+
+
+            /*Commands*/
+            DashboardViewCommand = new RelayCommand(o => { CurrentView = DashboardViewModel; }, o => true);
+            SettingsViewCommand = new RelayCommand(o => { CurrentView = SettingsViewModel; }, o => true);
+            UsersViewCommand = new RelayCommand(o => { CurrentView = UsersViewModel; }, o => true);
+            ServersViewCommand = new RelayCommand(o => { CurrentView = ServersViewModel; }, o => true);
+            ConsoleViewCommand = new RelayCommand(o => { CurrentView = ConsoleViewModel; }, o => true);
 
             //Set the default view to the DashboardViewModel
             CurrentView = DashboardViewModel;
@@ -64,7 +65,10 @@ namespace BukkitNET.MVVM.ViewModel
         public ConsoleViewModel ConsoleViewModel
         {
             get { return _consoleViewModel; }
-            set { _consoleViewModel = value; }
+            set
+            {
+                _consoleViewModel = value;
+            }
         }
 
 
@@ -89,7 +93,11 @@ namespace BukkitNET.MVVM.ViewModel
         public ServersViewModel ServersViewModel
         {
             get { return _serversViewModel; }
-            set { _serversViewModel = value; }
+            set
+            {
+                _serversViewModel = value;
+
+            }
         }
 
 
