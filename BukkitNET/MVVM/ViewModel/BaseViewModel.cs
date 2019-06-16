@@ -12,9 +12,10 @@ namespace BukkitNET.MVVM.ViewModel
     class BaseViewModel : ObservableObject
     {
         public RelayCommand DashboardViewCommand { get; set; }
+        public RelayCommand ConsoleViewCommand { get; set; }
         public RelayCommand SettingsViewCommand { get; set; }
         public RelayCommand UsersViewCommand { get; set; }
-        public RelayCommand ServersViewCommand { get; set; }    
+        public RelayCommand ServersViewCommand { get; set; }
 
 
         public BaseViewModel()
@@ -25,9 +26,11 @@ namespace BukkitNET.MVVM.ViewModel
             SettingsViewCommand = new RelayCommand(o => { CurrentView = SettingsViewModel; }, o => true);
             UsersViewCommand = new RelayCommand(o => { CurrentView = UsersViewModel; }, o => true);
             ServersViewCommand = new RelayCommand(o => { CurrentView = ServersViewModel; }, o => true);
+            ConsoleViewCommand = new RelayCommand(o => { CurrentView = ConsoleViewModel; }, o => true);
 
             //Initialize a new instance of the ViewModel
             DashboardViewModel = new DashboardViewModel();
+            ConsoleViewModel = new ConsoleViewModel();
             SettingsViewModel = new SettingsViewModel();
             UsersViewModel = new UsersViewModel();
             ServersViewModel = new ServersViewModel();
@@ -55,6 +58,15 @@ namespace BukkitNET.MVVM.ViewModel
             get { return _dashboardViewModel; }
             set { _dashboardViewModel = value; }
         }
+
+        private ConsoleViewModel _consoleViewModel;
+
+        public ConsoleViewModel ConsoleViewModel
+        {
+            get { return _consoleViewModel; }
+            set { _consoleViewModel = value; }
+        }
+
 
         private SettingsViewModel _settingsViewModel;
 

@@ -7,8 +7,82 @@
         xmlns:viewModel="clr-namespace:BukkitNET.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="ServerEditView" Height="450" Width="800"
-        Closed="ServerEditView_OnClosed">
+        Closed="ServerEditView_OnClosed"
+        MouseDown="ServerEditView_OnMouseDown"
+        WindowStyle="None"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
     <Grid>
-        <TextBlock Text="{Binding ServerName}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Background="#F4F4F4">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="1"
+                                  Direction="270"
+                                  Color="#E4E4E4"
+                                  Opacity="0.6"
+                                  BlurRadius="0.5"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="Your Servers"
+                               FontFamily="Arial"
+                               FontWeight="Medium"
+                               FontSize="14"
+                               Margin="5"/>
+                    <TextBlock Text="BukkitNET"
+                               HorizontalAlignment="Center"
+                               Foreground="#8C8C8C"
+                               FontSize="10"
+                               TextOptions.TextFormattingMode="Ideal"
+                               TextOptions.TextHintingMode="Auto"/>
+                </StackPanel>
+
+                <Button Grid.Column="2"
+                        Width="100" Height="25"
+                        Style="{StaticResource ModernInstallButton}"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,20,0"
+                        Command="{Binding AddServerModelCommand}">
+                    <TextBlock Text="Create &amp; Edit"
+                               Foreground="White"
+                               FontWeight="Medium"/>
+                </Button>
+
+            </Grid>
+        </Border>
+
+
+        <Grid Row="2">
+            <StackPanel>
+
+                <StackPanel Width="100">
+                    <TextBlock Text="Server Name"/>
+                    <TextBox Width="100" Height="25"
+                             FontWeight="Medium"
+                             Text="{Binding ServerName}"/>
+                </StackPanel>
+
+                <StackPanel Width="100">
+                    <TextBlock Text="Memory"/>
+                    <TextBox Width="100" Height="25"
+                             FontWeight="Medium"/>
+                </StackPanel>
+
+            </StackPanel>
+            
+
+        </Grid>
+
     </Grid>
 </Window>

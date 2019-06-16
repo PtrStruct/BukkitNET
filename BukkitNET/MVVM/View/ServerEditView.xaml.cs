@@ -31,5 +31,11 @@ namespace BukkitNET.MVVM.View
         {
             ServersViewModel.BlurRadius = 0;
         }
+
+        private void ServerEditView_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
+        }
     }
 }

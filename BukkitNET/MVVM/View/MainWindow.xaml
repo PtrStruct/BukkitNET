@@ -67,7 +67,8 @@
                 </RadioButton>
 
                 <RadioButton Style="{StaticResource MenuButtonTheme}"
-                             Width="300">
+                             Width="300"
+                             Command="{Binding ConsoleViewCommand}">
                     <StackPanel Orientation="Horizontal"
                                 Margin="10,0,0,0">
                         <iconPacks:PackIconMaterial Kind="Console" 
