@@ -79,6 +79,9 @@
     <Compile Include="MVVM\View\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\View\ServerEditView.xaml.cs">
+      <DependentUpon>ServerEditView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\ServersView.xaml.cs">
       <DependentUpon>ServersView.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVVM\View\ServerEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\ServersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

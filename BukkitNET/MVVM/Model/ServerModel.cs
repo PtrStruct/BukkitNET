@@ -7,7 +7,7 @@ using BukkitNET.Core;
 
 namespace BukkitNET.MVVM.Model
 {
-    class ServerModel : ObservableObject
+    public class ServerModel : ObservableObject
     {
         public ServerModel()
         {

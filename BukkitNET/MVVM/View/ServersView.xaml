@@ -6,13 +6,20 @@
              xmlns:local="clr-namespace:BukkitNET.MVVM.View"
              xmlns:viewModel="clr-namespace:BukkitNET.MVVM.ViewModel"
              xmlns:converters="clr-namespace:BukkitNET.Converters"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:model="clr-namespace:BukkitNET.MVVM.Model"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="#E4E5E7">
+             Background="#E4E5E7"
+             x:Name="ServerView">
+    <UserControl.Effect>
+        <BlurEffect Radius="{Binding BlurRadius}"/>
+    </UserControl.Effect>
 
     <UserControl.Resources>
         <converters:StatusBackgroundConverter x:Key="BackgroundConverter"/>
     </UserControl.Resources>
+
     <UserControl.DataContext>
         <viewModel:ServersViewModel/>
     </UserControl.DataContext>
@@ -58,7 +65,8 @@
                         Width="100" Height="25"
                         Style="{StaticResource ModernInstallButton}"
                         HorizontalAlignment="Right"
-                        Margin="0,0,20,0">
+                        Margin="0,0,20,0"
+                        Command="{Binding AddServerModelCommand}">
                     <TextBlock Text="Create &amp; Edit"
                                Foreground="White"
                                FontWeight="Medium"/>
@@ -66,7 +74,6 @@
 
             </Grid>
         </Border>
-
 
         <Border Grid.Row="1"
                 VerticalAlignment="Top"
@@ -80,13 +87,14 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Border Height="20"
                             Margin="5,0,5,0"
                             CornerRadius="4"
                             Background="White"
-                            Grid.ColumnSpan="4"/>
+                            Grid.ColumnSpan="5"/>
 
                     <TextBlock Text="Name"
                                HorizontalAlignment="Center"
@@ -107,6 +115,12 @@
                                HorizontalAlignment="Center"
                                FontWeight="Bold"/>
 
+
+                    <TextBlock Text="Action"
+                               Grid.Column="4"
+                               HorizontalAlignment="Center"
+                               FontWeight="Bold"/>
+
                 </Grid>
 
                 <ItemsControl ItemsSource="{Binding ServerCollection}">
@@ -119,6 +133,7 @@
                                 <Grid>
 
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
@@ -157,7 +172,7 @@
                                     </Border>
 
 
-                                    <Border Grid.Column="4"
+                                    <Border Grid.Column="3"
                                             CornerRadius="4"
                                             Width="60" Height="20"
                                             Background="{Binding ElementName=StatusTextBlock, Path=Text, Converter={StaticResource BackgroundConverter}}">
@@ -168,6 +183,29 @@
                                                    Foreground="White"
                                                    FontWeight="Medium"/>
                                     </Border>
+
+                                    <StackPanel Orientation="Horizontal"
+                                                Grid.Column="4" 
+                                                HorizontalAlignment="Center">
+                                        <Button Width="20" Height="20"
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                Command="{Binding ElementName=ServerView, Path=DataContext.ShowEditServerCommand}"
+                                                CommandParameter="{Binding .}">
+                                            <iconPacks:PackIconMaterial Kind="SquareEditOutline" 
+                                                                        Foreground="Black"/>
+                                        </Button>
+
+                                        <Button Width="20" Height="20"
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                Margin="10">
+                                            <iconPacks:PackIconMaterial Kind="Delete" 
+                                                                        Foreground="Red"/>
+                                        </Button>
+                                    </StackPanel>
+
+
                                 </Grid>
 
                             </Border>
@@ -175,9 +213,6 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </StackPanel>
-
-
-            
         </Border>
     </Grid>
 </UserControl>
