@@ -203,7 +203,9 @@
                                         <Button Width="20" Height="20"
                                                 Background="Transparent"
                                                 BorderThickness="0"
-                                                Margin="10">
+                                                Margin="10"
+                                                Command="{Binding ElementName=ServerView, Path=DataContext.DeleteServerCommand}"
+                                                CommandParameter="{Binding .}">
                                             <iconPacks:PackIconMaterial Kind="Delete" 
                                                                         Foreground="Red"/>
                                         </Button>

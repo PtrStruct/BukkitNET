@@ -18,23 +18,20 @@ namespace BukkitNET.MVVM.ViewModel
     public class ServersViewModel : ObservableObject
     {
         public RelayCommand AddServerModelCommand { get; set; }
+        public RelayCommand DeleteServerCommand { get; set; }
         public RelayCommand ShowEditServerCommand { get; set; }
-
         public RelayCommand SaveServerCommand { get; set; }
 
 
         public ObservableCollection<ServerModel> ServerCollection { get; set; }
         public ServersViewModel()
         {
-            ServerCollection = new ObservableCollection<ServerModel>();
             /*Commands*/
             AddServerModelCommand = new RelayCommand(o =>
             {
                 ServerCollection.Add(new ServerModel());
-
-
             }, o => true);
-
+            DeleteServerCommand = new RelayCommand(o => { ServerCollection.Remove(o as ServerModel); ServerListService.SaveServer(ServerCollection); }, o => true);
 
             ShowEditServerCommand = new RelayCommand(o =>
             {

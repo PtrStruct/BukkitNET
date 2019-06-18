@@ -75,6 +75,13 @@
                 </StackPanel>
 
                 <StackPanel Width="100">
+                    <TextBlock Text="Server Version"/>
+                    <TextBox Width="100" Height="25"
+                             FontWeight="Medium"
+                             Text="{Binding ServerVersion}"/>
+                </StackPanel>
+
+                <StackPanel Width="100">
                     <TextBlock Text="Memory"/>
                     <TextBox Width="100" Height="25"
                              FontWeight="Medium"/>

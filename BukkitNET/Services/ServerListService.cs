@@ -41,6 +41,21 @@ namespace BukkitNET.Services
             }
         }
 
+        public static void UpdateEntry(ServerModel sm, string status)
+        {
+            //Load the collection
+            //Query the collection
+            //Update the entry
+            //Save the collection
+
+            //Each entry is a reference object
+
+            var collection = LoadServers();
+
+            collection.FirstOrDefault(x => x.ServerName == sm.ServerName).Status = status;
+            SaveServer(collection);
+        }
+
         public static ObservableCollection<ServerModel> LoadServers()
         {
             ReferenceExist();

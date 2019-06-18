@@ -35,7 +35,6 @@ namespace BukkitNET.MVVM.View
 
             //save the new collection to the file
             ServerListService.SaveServer(ServersViewModel.ServerCollection);
-
         }
 
         private void ServerEditView_OnMouseDown(object sender, MouseButtonEventArgs e)

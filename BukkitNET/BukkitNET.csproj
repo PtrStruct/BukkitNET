@@ -97,6 +97,7 @@
     <Compile Include="MVVM\View\UsersView.xaml.cs">
       <DependentUpon>UsersView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\ProcessCommandService.cs" />
     <Compile Include="Services\ServerListService.cs" />
     <Compile Include="Services\ServerService.cs" />
     <Compile Include="Services\SettingsService.cs" />
