@@ -45,9 +45,13 @@ namespace BukkitNET.Services
         {
             ReferenceExist();
             BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream(path, FileMode.Open))
+            using (FileStream fs = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
+                                                  @"\BukkitNET\Servers.dat", FileMode.Open))
             {
-                formatter.Deserialize(fs);
+                if (fs.Length > 0)
+                {
+                     return (ObservableCollection<ServerModel>)formatter.Deserialize(fs);
+                }
             }
 
             return new ObservableCollection<ServerModel>();

@@ -48,37 +48,7 @@ namespace BukkitNET.MVVM.ViewModel
 
             }, o => true);
 
-            //Deserialize data from Servers.dat
-            //C:\Users\developer\source\repos\BukkitNET\BukkitNET\bin\Debug\Servers.dat
-            //C:\Users\developer\AppData\Local\BukkitNET\UserConfig\BukkitNET\Servers.bin
-
-            //if (!File.Exists(@"C:\Users\developer\source\repos\BukkitNET\BukkitNET\bin\Debug\Servers.dat"))
-            //    File.Create("Servers.dat");
-            //{
-
-            //}
-
-            if (File.ReadAllText("Servers.dat").Length > 0)
-            {
-                using (FileStream fs = new FileStream(@"C:\Users\developer\source\repos\BukkitNET\BukkitNET\bin\Debug\Servers.dat", FileMode.Open))
-                {
-
-                    BinaryFormatter formatter = new BinaryFormatter();
-
-                    // Deserialize the hashtable from the file and 
-                    // assign the reference to the local variable.
-                    //ObservableCollection<ServerModel> server = (ObservableCollection<ServerModel>)formatter.Deserialize(fs);
-
-                    ServerCollection = (ObservableCollection<ServerModel>)formatter.Deserialize(fs);
-
-                }
-            }
-
-
-
-            //SaveServerCommand = new RelayCommand(o => { ServerListService.SaveServer(o as ServerModel); }, o => true);
-
-
+            ServerCollection = ServerListService.LoadServers();
 
             BlurRadius = 0;
         }
