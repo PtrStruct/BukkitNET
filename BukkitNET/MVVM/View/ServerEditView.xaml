@@ -14,7 +14,7 @@
         ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="80"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border Background="#F4F4F4">
@@ -53,7 +53,8 @@
                         Style="{StaticResource ModernInstallButton}"
                         HorizontalAlignment="Right"
                         Margin="0,0,20,0"
-                        Command="{Binding AddServerModelCommand}">
+                        Command="{Binding SaveServerCommand}"
+                        CommandParameter="{Binding }">
                     <TextBlock Text="Create &amp; Edit"
                                Foreground="White"
                                FontWeight="Medium"/>

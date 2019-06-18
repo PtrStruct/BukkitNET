@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using BukkitNET.Core;
+using BukkitNET.Services;
 
 namespace BukkitNET.MVVM.Model
 {
+
+    [Serializable]
     public class ServerModel : ObservableObject
     {
         public ServerModel()
@@ -23,6 +29,7 @@ namespace BukkitNET.MVVM.Model
             {
                 _serverName = value;
                 OnPropertyChanged();
+
             }
         }
 
@@ -31,7 +38,12 @@ namespace BukkitNET.MVVM.Model
         public string ServerVersion
         {
             get { return _serverVersion; }
-            set { _serverVersion = value; }
+            set
+            {
+                _serverVersion = value;
+                OnPropertyChanged();
+
+            }
         }
 
 
@@ -42,8 +54,9 @@ namespace BukkitNET.MVVM.Model
             get { return _status; }
             set
             {
-                _status = value; 
+                _status = value;
                 OnPropertyChanged();
+
             }
         }
 
@@ -54,12 +67,9 @@ namespace BukkitNET.MVVM.Model
             get { return _jarPath; }
             set
             {
-                _jarPath = value; 
+                _jarPath = value;
                 OnPropertyChanged();
             }
         }
-
-
-
     }
 }

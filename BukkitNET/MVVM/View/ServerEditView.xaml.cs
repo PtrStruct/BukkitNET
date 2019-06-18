@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BukkitNET.MVVM.Model;
 using BukkitNET.MVVM.ViewModel;
+using BukkitNET.Services;
 
 namespace BukkitNET.MVVM.View
 {
@@ -30,6 +32,10 @@ namespace BukkitNET.MVVM.View
         private void ServerEditView_OnClosed(object sender, EventArgs e)
         {
             ServersViewModel.BlurRadius = 0;
+
+            //save the new collection to the file
+            ServerListService.SaveServer(ServersViewModel.ServerCollection);
+
         }
 
         private void ServerEditView_OnMouseDown(object sender, MouseButtonEventArgs e)

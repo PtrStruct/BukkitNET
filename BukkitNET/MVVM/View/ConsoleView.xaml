@@ -41,6 +41,7 @@
                      Foreground="White"
                      VerticalContentAlignment="Center"
                      BorderThickness="0"
+                     FontFamily="Consolas"
                      Grid.Column="1"
                      x:Name="CommandTextbox">
                 <TextBox.InputBindings>

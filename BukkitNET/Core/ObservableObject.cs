@@ -9,8 +9,10 @@ using BukkitNET.Annotations;
 
 namespace BukkitNET.Core
 {
+    [Serializable]
     public class ObservableObject : INotifyPropertyChanged
     {
+        [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
