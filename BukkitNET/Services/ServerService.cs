@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BukkitNET.MVVM.Model;
+using BukkitNET.MVVM.ViewModel;
 
 namespace BukkitNET.Services
 {
     class ServerService
     {
-
         static StreamWriter WriteCommands;
+
         public ServerService()
         {
 
         }
 
-
         public static void StartServer(ServerModel ServerModel)
         {
-            Debug.Print($"Stopping server: {ServerModel.ServerName}");
+            Debug.Print($"Starting server: {ServerModel.ServerName}");
 
 
             var jarPath = ServerModel.JarPath;

@@ -27,10 +27,18 @@ namespace BukkitNET.Services
 
         private static void ReferenceExist()
         {
+
+
             if (!Directory.Exists($"{Environment.SpecialFolder.LocalApplicationData} \\BukkitNET"))
             {
                 Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
                                           @"\BukkitNET");
+            }
+
+            if (!Directory.Exists($"{Environment.SpecialFolder.LocalApplicationData} \\BukkitNET\\ConsoleLogs"))
+            {
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
+                                          @"\BukkitNET\ConsoleLogs");
             }
 
             if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +

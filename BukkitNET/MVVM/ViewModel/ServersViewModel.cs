@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using BukkitNET.Core;
 using BukkitNET.MVVM.Model;
 using BukkitNET.MVVM.View;
@@ -22,6 +14,7 @@ namespace BukkitNET.MVVM.ViewModel
         public RelayCommand ShowEditServerCommand { get; set; }
         public RelayCommand SaveServerCommand { get; set; }
 
+        
 
         public ObservableCollection<ServerModel> ServerCollection { get; set; }
         public ServersViewModel()

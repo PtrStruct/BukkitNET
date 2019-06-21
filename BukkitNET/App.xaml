@@ -21,6 +21,7 @@
                 <view:ConsoleView/>
             </DataTemplate>
 
+            <!-- Set the DataContext implicitly in terms of DataType -->
             <DataTemplate DataType="{x:Type viewModel:ServersViewModel}">
                 <view:ServersView/>
             </DataTemplate>
