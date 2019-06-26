@@ -11,13 +11,11 @@ namespace BukkitNET.MVVM.ViewModel
     public class UsersViewModel : ObservableObject
     {
         public static ObservableCollection<string> Users { get; set; }
+
+
         public UsersViewModel()
         {
             Users = new ObservableCollection<string>();
-
-            Users.Add("Hello");
-            Users.Add("World");
-            Users.Add("Hello");
         }
 
         /// <summary>
@@ -35,7 +33,7 @@ namespace BukkitNET.MVVM.ViewModel
         /// <param name="username">The username to remove to the collection of users.</param>
         public static void ParseDisconnect(string username)
         {
-
+            Users.Remove(username);
         }
     }
 }

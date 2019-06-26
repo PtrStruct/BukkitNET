@@ -179,10 +179,10 @@ namespace BukkitNET.MVVM.ViewModel
                         Application.Current.Dispatcher.Invoke(() => { ConsoleLogMessages.Add(e.Data); });
                         break;
 
-                    case "thread/INFO":
-                        if (String.Equals(chunks[2], "Disconnected"))
+                    case "thread/INFO]:":
+                        if (String.Equals(chunks[6], "Disconnected"))
                         {
-
+                            UsersViewModel.ParseDisconnect(chunks[3]);
                         }
                         Application.Current.Dispatcher.Invoke(() => { ConsoleLogMessages.Add(e.Data); });
                         break;
