@@ -13,7 +13,7 @@ namespace BukkitNET.Services
 {
     class ProcessCommandService
     {
-        static StreamWriter WriteCommands;
+        //static StreamWriter WriteCommands;
 
         public ProcessCommandService()
         {

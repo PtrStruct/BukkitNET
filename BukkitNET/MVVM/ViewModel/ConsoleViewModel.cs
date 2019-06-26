@@ -13,14 +13,44 @@ using BukkitNET.Services;
 
 namespace BukkitNET.MVVM.ViewModel
 {
+
     class ConsoleViewModel : ObservableObject
     {
         static StreamWriter WriteCommands;
 
 
+
         public string ConsoleLogFilePath { get; set; }
         public ObservableCollection<string> ConsoleLogMessages { get; set; }
         public RelayCommand EnterCommand { get; set; }
+
+        public ServerModel ServerInstance { get; set; }
+
+        private string _currentCommand;
+
+        public string CurrentCommand
+        {
+            get { return _currentCommand; }
+            set
+            {
+                _currentCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private ServerModel _onlineServerModel;
+
+        public ServerModel OnlineServerModel
+        {
+            get { return _onlineServerModel; }
+            set
+            {
+                _onlineServerModel = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public string TestProperty { get; set; }
 
@@ -57,18 +87,28 @@ namespace BukkitNET.MVVM.ViewModel
         {
             var serverName = command.Split(' ')[1];
             var Server = ServerListService.LoadServers().FirstOrDefault(x => x.ServerName == serverName);
+            var IsAnyServerStarted = ServerListService.LoadServers().Any(x => x.Status == "online");
 
             switch (command.Split(' ')[0].ToLower())
             {
-
                 case "start":
-                    if (Server != null)
+                    if (!IsAnyServerStarted)
                     {
-                        StartServer(Server);
-                        ServerListService.UpdateEntry(Server, "online");
+                        if (Server != null)
+                        {
+                            StartServer(Server);
+                            ServerListService.UpdateEntry(Server, "online");
+                            OnlineServerModel = Server;
+                            CurrentCommand = "";
+                        }
+                        else
+                            Debug.Print($"Server {serverName} not found.");
                     }
                     else
-                        Debug.Print($"Server {serverName} not found.");
+                    {
+                        Debug.Print($"A server is already started.");
+
+                    }
                     break;
 
                 case "stop":
@@ -76,29 +116,30 @@ namespace BukkitNET.MVVM.ViewModel
                     {
                         ServerService.StopServer(Server);
                         ServerListService.UpdateEntry(Server, "offline");
+                        CurrentCommand = "";
+
                     }
+                    break;
+
+                default:
+                    WriteCommands?.WriteLineAsync(command);
+                    CurrentCommand = "";
+
                     break;
             }
         }
 
         public void StartServer(ServerModel ServerModel)
         {
-            //ConsoleLogFilePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) +
-            //               $@"\BukkitNET\ConsoleLogs\Log - " + string.Format("{0:yyyy-MM-dd_hh-mm-ss-fff}", DateTime.Now) + ".dat";
-
-            //using (var uh = File.Create(ConsoleLogFilePath)) { }
-
+            ServerInstance = ServerModel;
             Debug.Print($"Starting server: {ServerModel.ServerName}");
             ConsoleLogMessages.Clear();
 
-
             var jarPath = ServerModel.JarPath;
-
             var startInfo = new ProcessStartInfo(@"java -Xmx" + 1024 + "M -Xms" + 1024 + "M -jar " + jarPath + " " + "nogui");
 
             //Generate files to this folder.
             startInfo.WorkingDirectory = Path.GetDirectoryName(jarPath);
-
             Process Minecraft = new Process();
             Minecraft.StartInfo = startInfo;
             Minecraft.StartInfo.FileName = "CMD.exe";
@@ -128,7 +169,34 @@ namespace BukkitNET.MVVM.ViewModel
         private void ServerProc_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             Debug.Print(e.Data);
-            Application.Current.Dispatcher.Invoke(() => { ConsoleLogMessages.Add(e.Data); });
+            var chunks = GetDataChunks(e.Data);
+            try
+            {
+                switch (chunks[2])
+                {
+                    case "Authenticator":
+                        UsersViewModel.ParseLogin(chunks[7]);
+                        Application.Current.Dispatcher.Invoke(() => { ConsoleLogMessages.Add(e.Data); });
+                        break;
+
+                    case "thread/INFO":
+                        if (String.Equals(chunks[2], "Disconnected"))
+                        {
+
+                        }
+                        Application.Current.Dispatcher.Invoke(() => { ConsoleLogMessages.Add(e.Data); });
+                        break;
+
+                    default:
+                        Application.Current.Dispatcher.Invoke(() => { ConsoleLogMessages.Add(e.Data); });
+                        break;
+                }
+            }
+            catch (Exception exception)
+            {
+                Application.Current.Dispatcher.Invoke(() => { ConsoleLogMessages.Add(e.Data); });
+            }
+            
         }
 
         private void ServerProcOnErrorDataReceived(object sender, DataReceivedEventArgs e)
@@ -136,5 +204,11 @@ namespace BukkitNET.MVVM.ViewModel
             Debug.Print(e.Data);
             Application.Current.Dispatcher.Invoke(() => { ConsoleLogMessages.Add(e.Data); });
         }
+
+        private string[] GetDataChunks(string data)
+        {
+            return data.Split(' ');
+        }
+
     }
 }

@@ -9,9 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Background="#E4E5E7">
 
-    <!--<UserControl.DataContext>
-        <viewModel:ConsoleViewModel/>
-    </UserControl.DataContext>-->
+
 
     <Grid>
         <Grid.RowDefinitions>
@@ -50,6 +48,7 @@
                      BorderThickness="0"
                      FontFamily="Consolas"
                      Grid.Column="1"
+                     Text="{Binding CurrentCommand}"
                      x:Name="CommandTextbox">
                 <TextBox.InputBindings>
                     <KeyBinding Command="{Binding EnterCommand}"
